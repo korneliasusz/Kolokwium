@@ -8,7 +8,7 @@
     <div id="app">
         <div class="square" v-for="wiersz in rows">
             <div v-for="kolumna in columns">
-                <div class="cell">
+                <div class="cell" :class="{active: (active[0]==wiersz && active[2]==kolumna)}" >
                     {{ wiersz }},{{ kolumna }}
                 </div>
             </div>
@@ -23,7 +23,8 @@
         data: {
             message: 'Powodzenia',
             rows: 10,
-            columns: 10
+            columns: 10,
+            active: "1,1"
         }
     })
     </script>
@@ -51,10 +52,10 @@
         margin-right: 10px;
     }
 
-    .cell #center
+    .active
     {
-        
-        flex-wrap: wrap;
+        background-color: red;
+        color: white;
     }
 
 </style>
