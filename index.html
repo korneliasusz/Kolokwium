@@ -5,7 +5,7 @@
     <script src="https://unpkg.com/vue"></script>
 </head>
 <body>
-    <div id="app" tabindex="0"  >
+    <div id="app" tabindex="0" keydown>
         <!-- @keyup.down="active=[wiersz+1,kolumna]" @keyup.up="active=[wiersz-1,kolumna]" @keyup.right="active=[wiersz,kolumna+1]" @keyup.left="active=[wiersz,kolumna-1]" -->
             <div class="square" v-for="wiersz in rows">
                 <div v-for="kolumna in columns">
@@ -24,15 +24,15 @@
         el: '#app',
         data: {
             message: 'Powodzenia',
-            rows: 10,
-            columns: 10,
+            rows: 7,
+            columns: 15,
             active: [1,1],
             tabindex: 0
         },
 
         methods: {
-            down() {
-                this.active = [5,5];
+            goTo(index,index2) {
+                this.active=[index,index2];
             }
         }
     })
