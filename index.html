@@ -8,7 +8,7 @@
     <div id="app">
         <div class="square" v-for="wiersz in rows">
             <div v-for="kolumna in columns">
-                <div class="cell" :class="{active: (active[0]==wiersz && active[2]==kolumna)}" >
+                <div class="cell" :class="{active: (active[0]==wiersz && active[1]==kolumna)}" @click="active=[wiersz,kolumna]">
                     {{ wiersz }},{{ kolumna }}
                 </div>
             </div>
@@ -24,7 +24,7 @@
             message: 'Powodzenia',
             rows: 10,
             columns: 10,
-            active: "1,1"
+            active: [1,1]
         }
     })
     </script>
