@@ -6,11 +6,14 @@
 </head>
 <body>
     <div id="app">
-        <div class="cell">
-            <div id="center">
-                1
+        <div class="square" v-for="wiersz in rows">
+            <div v-for="kolumna in columns">
+                <div class="cell">
+                    {{ wiersz }},{{ kolumna }}
+                </div>
             </div>
         </div>
+        
         {{ message }}
     </div>
 
@@ -18,15 +21,26 @@
     var app = new Vue({
         el: '#app',
         data: {
-            message: 'Powodzenia'
+            message: 'Powodzenia',
+            rows: 10,
+            columns: 10
         }
     })
     </script>
 
 
 <style>
+    .square
+    {
+        display: flex;
+        flex-direction: row;
+    }
+
     .cell
     {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: 50px;
         width: 50px;
         background-color: orange;
@@ -39,9 +53,8 @@
 
     .cell #center
     {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        
+        flex-wrap: wrap;
     }
 
 </style>
