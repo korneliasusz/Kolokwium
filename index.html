@@ -5,16 +5,18 @@
     <script src="https://unpkg.com/vue"></script>
 </head>
 <body>
-    <div id="app">
-        <div class="square" v-for="wiersz in rows">
-            <div v-for="kolumna in columns">
-                <div class="cell" :class="{active: (active[0]==wiersz && active[1]==kolumna)}" @click="active=[wiersz,kolumna]">
-                    {{ wiersz }},{{ kolumna }}
+    <div id="app" tabindex="0"  >
+        <!-- @keyup.down="active=[wiersz+1,kolumna]" @keyup.up="active=[wiersz-1,kolumna]" @keyup.right="active=[wiersz,kolumna+1]" @keyup.left="active=[wiersz,kolumna-1]" -->
+            <div class="square" v-for="wiersz in rows">
+                <div v-for="kolumna in columns">
+                    <div class="cell" :class="{active: (active[0]==wiersz && active[1]==kolumna)}" @click="active=[wiersz,kolumna]">
+                        {{ wiersz }},{{ kolumna }}
+                    </div>
                 </div>
             </div>
-        </div>
+            
+            {{ message }}
         
-        {{ message }}
     </div>
 
     <script>
@@ -24,7 +26,14 @@
             message: 'Powodzenia',
             rows: 10,
             columns: 10,
-            active: [1,1]
+            active: [1,1],
+            tabindex: 0
+        },
+
+        methods: {
+            down() {
+                this.active = [5,5];
+            }
         }
     })
     </script>
